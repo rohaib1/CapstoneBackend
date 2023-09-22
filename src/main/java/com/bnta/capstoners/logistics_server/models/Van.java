@@ -79,4 +79,8 @@ public class Van {
     public void setModel(String model) {
         this.model = model;
     }
+
+    public void addRoute(Route route){
+        this.routes.add(route);
+    }
 }
