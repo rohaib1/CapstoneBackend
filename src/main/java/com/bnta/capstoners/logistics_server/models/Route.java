@@ -3,6 +3,7 @@ package com.bnta.capstoners.logistics_server.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,9 +35,9 @@ public class Route {
     @Column(name = "start_location_lat")
     private double startLocationLat;
 
-    public Route(String routeName, List<Order> orders, double startLocationLong, double startLocationLat){
+    public Route(String routeName, double startLocationLong, double startLocationLat){
         this.routeName = routeName;
-        this.orders = orders;
+        this.orders = new ArrayList<>();
         this.van = null;
         this.distance = 0;
         this.startLocationLong = startLocationLong;

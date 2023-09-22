@@ -44,11 +44,13 @@ public class DataLoader implements ApplicationRunner {
                 new Order(51.479693, -0.141626, "Toaster", LocalDate.of(2023, 9, 16))
         );
 
-        Route route = new Route("Route 001", orders, 51.500832, -0.124638);
+        Route route = new Route("Route 001", 51.500832, -0.124638);
 
         Van van = new Van("Carlos", 15, "Ford Transit");
 
         vanRepository.save(van);
+
+        route.setVan(van);
 
         routeRepository.save(route);
 

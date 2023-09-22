@@ -27,11 +27,11 @@ public class VanService {
         return vanRepository.findById(id);
     }
 
-    public Van updateVan(Long vanId, Long routeId){
-        Van vanToUpdate = vanRepository.findById(vanId).get();
-        Route routeToAdd = routeRepository.findById(routeId).get();
-        vanToUpdate.addRoute(routeToAdd);
-        vanRepository.save(vanToUpdate);
-        return vanToUpdate;
-    }
+//    public Van updateVan(Long vanId, Long routeId){
+//        Van vanToUpdate = vanRepository.findById(vanId).get();
+//        Route routeToAdd = routeRepository.findById(routeId).get();
+//        vanToUpdate.addRoute(routeToAdd);
+//        vanRepository.save(vanToUpdate);
+//        return vanToUpdate;
+//    }
 }

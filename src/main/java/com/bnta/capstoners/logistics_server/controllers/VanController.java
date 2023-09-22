@@ -37,13 +37,13 @@ public class VanController {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @PatchMapping(value = "/{vanId}/assign/{routeId}")
-    public ResponseEntity<Van> assignRouteToVan(@PathVariable Long vanId, @PathVariable Long routeId){
-        Optional<Van> van = vanService.findVanById(vanId);
-        Optional<Route> route = routeService.findRouteById(routeId);
-        if (van.isPresent() && route.isPresent()) {
-            return new ResponseEntity<>(vanService.updateVan(vanId, routeId), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-    }
+//    @PatchMapping(value = "/{vanId}/assign/{routeId}")
+//    public ResponseEntity<Van> assignRouteToVan(@PathVariable Long vanId, @PathVariable Long routeId){
+//        Optional<Van> van = vanService.findVanById(vanId);
+//        Optional<Route> route = routeService.findRouteById(routeId);
+//        if (van.isPresent() && route.isPresent()) {
+//            return new ResponseEntity<>(vanService.updateVan(vanId, routeId), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//    }
 }
