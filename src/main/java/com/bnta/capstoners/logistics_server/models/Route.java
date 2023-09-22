@@ -13,7 +13,7 @@ public class Route {
     private Long id;
 
     @Column
-    private String name;
+    private String routeName;
 
     @Column
     @OneToMany
@@ -32,8 +32,8 @@ public class Route {
     private double startLocationLat;
 
     public
-    Route(String name, List<Order> orders, Van van, double distance, double startLocationLong, double startLocationLat){
-        this.name = name;
+    Route(String routeName, List<Order> orders, Van van, double distance, double startLocationLong, double startLocationLat){
+        this.routeName = routeName;
         this.orders = orders;
         this.van = van;
         this.distance = distance;
@@ -56,13 +56,13 @@ public class Route {
     }
 
     public
-    String getName(){
-        return name;
+    String getRouteName(){
+        return routeName;
     }
 
     public
-    void setName(String name){
-        this.name = name;
+    void setRouteName(String routeName){
+        this.routeName = routeName;
     }
 
     public
