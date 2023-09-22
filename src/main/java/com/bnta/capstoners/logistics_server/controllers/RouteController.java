@@ -2,7 +2,9 @@ package com.bnta.capstoners.logistics_server.controllers;
 
 import com.bnta.capstoners.logistics_server.models.Route;
 import com.bnta.capstoners.logistics_server.models.RouteDTO;
+import com.bnta.capstoners.logistics_server.models.Van;
 import com.bnta.capstoners.logistics_server.services.RouteService;
+import com.bnta.capstoners.logistics_server.services.VanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +19,12 @@ public class RouteController {
     @Autowired
     RouteService routeService;
 
+    @Autowired
+    VanService vanService;
+
     @GetMapping
-    public ResponseEntity<List<Route>> getAllRoutes(){
-        List<Route> allRoutes = routeService.findAllRoutes();
+    public ResponseEntity<List<Route>> getRoutes(){
+        List<Route> allRoutes = routeService.findRoutes();
         return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.FOUND);
     }
 
@@ -38,6 +43,16 @@ public class RouteController {
     public ResponseEntity<Route> createRoute(@RequestBody RouteDTO routeDTO){
         Route newRoute = routeService.saveRoute(routeDTO);
         return new ResponseEntity<>(newRoute, HttpStatus.CREATED);
+    }
+
+    @PatchMapping(value = "/{routeId}/assign/{vanId}")
+    public ResponseEntity<Route> assignVanToRoute(@PathVariable Long routeId, @PathVariable Long vanId){
+        Optional<Van> van = vanService.findVanById(vanId);
+        Optional<Route> route = routeService.findRouteById(routeId);
+        if (van.isPresent() && route.isPresent()) {
+            return new ResponseEntity<>(routeService.assignVanToRoute(routeId, vanId), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
 //    @DeleteMapping(value = "/{id}")

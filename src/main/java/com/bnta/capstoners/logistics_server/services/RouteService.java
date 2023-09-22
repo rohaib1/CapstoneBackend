@@ -3,8 +3,10 @@ package com.bnta.capstoners.logistics_server.services;
 import com.bnta.capstoners.logistics_server.models.Order;
 import com.bnta.capstoners.logistics_server.models.Route;
 import com.bnta.capstoners.logistics_server.models.RouteDTO;
+import com.bnta.capstoners.logistics_server.models.Van;
 import com.bnta.capstoners.logistics_server.repositories.OrderRepository;
 import com.bnta.capstoners.logistics_server.repositories.RouteRepository;
+import com.bnta.capstoners.logistics_server.repositories.VanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,10 @@ public class RouteService{
         @Autowired
         OrderRepository orderRepository;
 
-        public List<Route> findAllRoutes(){
+        @Autowired
+        VanRepository vanRepository;
+
+        public List<Route> findRoutes(){
                 return routeRepository.findAll();
         }
 
@@ -38,13 +43,19 @@ public class RouteService{
 
                 Route route = new Route(
                         routeDTO.getRouteName(),
-                        orders,
-                        routeDTO.getDistance(),
                         routeDTO.getStartLocationLong(),
                         routeDTO.getStartLocationLat()
                 );
 
                 return routeRepository.save(route);
+        }
+
+        public Route assignVanToRoute(Long routeId, Long vanId){
+                Van vanToAssign = vanRepository.findById(vanId).get();
+                Route routeToUpdate = routeRepository.findById(routeId).get();
+                routeToUpdate.setVan(vanToAssign);
+                routeRepository.save(routeToUpdate);
+                return routeToUpdate;
         }
 
 //        public void deleteRoute(Long id){
