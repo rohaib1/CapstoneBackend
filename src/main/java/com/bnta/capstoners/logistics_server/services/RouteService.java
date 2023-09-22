@@ -47,7 +47,7 @@ public class RouteService{
                 return routeRepository.save(route);
         }
 
-        public void deleteRoute(Long id){
-                routeRepository.deleteById(id);
-        }
+//        public void deleteRoute(Long id){
+//                routeRepository.deleteById(id);
+//        }
 }

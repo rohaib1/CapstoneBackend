@@ -40,16 +40,16 @@ public class RouteController {
         return new ResponseEntity<>(newRoute, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteRoute(@PathVariable Long id){
-        Optional<Route> route = routeService.findRouteById(id);
-        if (route.isPresent()) {
-            routeService.deleteRoute(id);
-            return new ResponseEntity<>(id, HttpStatus.OK);
-        }
-
-        else{
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
-    }
+//    @DeleteMapping(value = "/{id}")
+//    public ResponseEntity<Long> deleteRoute(@PathVariable Long id){
+//        Optional<Route> route = routeService.findRouteById(id);
+//        if (route.isPresent()) {
+//            routeService.deleteRoute(id);
+//            return new ResponseEntity<>(id, HttpStatus.OK);
+//        }
+//
+//        else{
+//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//        }
+//    }
 }
