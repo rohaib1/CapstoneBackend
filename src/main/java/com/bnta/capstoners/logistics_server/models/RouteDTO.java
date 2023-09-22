@@ -6,16 +6,16 @@ public class RouteDTO {
 
     private String routeName;
     private List<Long> orderIds;
-    private Long vanId;
+//    private Long vanId;
     private double distance;
     private double startLocationLong;
     private double startLocationLat;
 
     public
-    RouteDTO(String routeName, List<Long> orderIds, Long vanId, double distance, double startLocationLong, double startLocationLat){
+    RouteDTO(String routeName, List<Long> orderIds /*, Long vanId*/, double distance, double startLocationLong, double startLocationLat){
         this.routeName = routeName;
         this.orderIds = orderIds;
-        this.vanId = vanId;
+//        this.vanId = vanId;
         this.distance = distance;
         this.startLocationLong = startLocationLong;
         this.startLocationLat = startLocationLat;
@@ -45,15 +45,15 @@ public class RouteDTO {
         this.orderIds = orderIds;
     }
 
-    public
-    Long getVanId(){
-        return vanId;
-    }
-
-    public
-    void setVanId(Long vanId){
-        this.vanId = vanId;
-    }
+//    public
+//    Long getVanId(){
+//        return vanId;
+//    }
+//
+//    public
+//    void setVanId(Long vanId){
+//        this.vanId = vanId;
+//    }
 
     public
     double getDistance(){
