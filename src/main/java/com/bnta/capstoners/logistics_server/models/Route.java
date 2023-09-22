@@ -1,5 +1,6 @@
 package com.bnta.capstoners.logistics_server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,11 +16,13 @@ public class Route {
     @Column
     private String routeName;
 
-    @Column
-    @OneToMany
+    @OneToMany(mappedBy = "route")
+    @JsonIgnoreProperties({"route"})
     private List<Order> orders;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "van_id")
+    @JsonIgnoreProperties({"routes"})
     private Van van;
 
     @Column
