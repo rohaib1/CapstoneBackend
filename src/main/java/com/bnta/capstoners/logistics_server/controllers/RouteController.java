@@ -18,8 +18,8 @@ public class RouteController {
     RouteService routeService;
 
     @GetMapping
-    public ResponseEntity<List<Route>> getAllRoutes(){
-        List<Route> allRoutes = routeService.findAllRoutes();
+    public ResponseEntity<List<Route>> getRoutes(){
+        List<Route> allRoutes = routeService.findRoutes();
         return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.FOUND);
     }
 

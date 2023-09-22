@@ -21,7 +21,7 @@ public class RouteService{
         @Autowired
         OrderRepository orderRepository;
 
-        public List<Route> findAllRoutes(){
+        public List<Route> findRoutes(){
                 return routeRepository.findAll();
         }
 
