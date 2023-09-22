@@ -20,14 +20,14 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<List<Order>> getOrders(){
-        return new ResponseEntity<>(orderService.findAllOrders(), HttpStatus.OK);
+        return new ResponseEntity<>(orderService.findAllOrders(), HttpStatus.FOUND);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable Long id){
         Optional<Order> order = orderService.findOrderById(id);
         if(order.isPresent()) {
-            return new ResponseEntity<>(order.get(), HttpStatus.OK);
+            return new ResponseEntity<>(order.get(), HttpStatus.FOUND);
         }
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
