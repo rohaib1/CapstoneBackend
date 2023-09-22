@@ -1,5 +1,6 @@
 package com.bnta.capstoners.logistics_server.repositories;
 
-public
-interface OrderRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderRepository {
 }

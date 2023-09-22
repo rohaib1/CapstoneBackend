@@ -2,8 +2,7 @@ package com.bnta.capstoners.logistics_server.models;
 
 import java.util.List;
 
-public
-class RouteDTO {
+public class RouteDTO {
 
     private String routeName;
     private List<Long> orderIds;
