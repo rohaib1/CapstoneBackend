@@ -2,6 +2,7 @@ package com.bnta.capstoners.logistics_server.components;
 
 import com.bnta.capstoners.logistics_server.models.Order;
 import com.bnta.capstoners.logistics_server.models.Route;
+import com.bnta.capstoners.logistics_server.models.Van;
 import com.bnta.capstoners.logistics_server.repositories.OrderRepository;
 import com.bnta.capstoners.logistics_server.repositories.RouteRepository;
 import com.bnta.capstoners.logistics_server.repositories.VanRepository;
@@ -31,11 +32,6 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Route route = new Route("Route 001", null, 51.500832, -0.124638);
-
-
-        routeRepository.save(route);
-
         List<Order> orders = Arrays.asList(
                 new Order(51.501277, -0.140780, "Hairdryer", LocalDate.of(2023, 9, 8)),
                 new Order(51.501307, -0.092973, "Toaster", LocalDate.of(2023, 9, 8)),
@@ -46,16 +42,20 @@ public class DataLoader implements ApplicationRunner {
                 new Order(51.498431, -0.061480, "Kettle", LocalDate.of(2023, 9, 14)),
                 new Order(51.486531, -0.088410, "Iron", LocalDate.of(2023, 9, 15)),
                 new Order(51.479693, -0.141626, "Toaster", LocalDate.of(2023, 9, 16))
-
         );
+
+        Route route = new Route("Route 001", orders, 51.500832, -0.124638);
+
+        Van van = new Van("Carlos", 15, "Ford Transit");
+
+        vanRepository.save(van);
+
+        routeRepository.save(route);
 
         for (Order order : orders) {
             order.setRoute(route);
         }
 
-
         orderRepository.saveAll(orders);
-        route.setOrders(orders);
-        routeRepository.save(route);
     }
 }
