@@ -35,10 +35,10 @@ public class Route {
     private double startLocationLat;
 
     public
-    Route(String routeName, List<Order> orders, Van van, double distance, double startLocationLong, double startLocationLat){
+    Route(String routeName, List<Order> orders, double distance, double startLocationLong, double startLocationLat){
         this.routeName = routeName;
         this.orders = orders;
-        this.van = van;
+        this.van = null;
         this.distance = distance;
         this.startLocationLong = startLocationLong;
         this.startLocationLat = startLocationLat;
