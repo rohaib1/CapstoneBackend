@@ -39,7 +39,6 @@ public class RouteService{
                 Route route = new Route(
                         routeDTO.getRouteName(),
                         orders,
-                        routeDTO.getDistance(),
                         routeDTO.getStartLocationLong(),
                         routeDTO.getStartLocationLat()
                 );

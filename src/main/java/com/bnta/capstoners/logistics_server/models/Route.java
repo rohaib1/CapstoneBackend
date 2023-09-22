@@ -34,12 +34,11 @@ public class Route {
     @Column(name = "start_location_lat")
     private double startLocationLat;
 
-    public
-    Route(String routeName, List<Order> orders, double distance, double startLocationLong, double startLocationLat){
+    public Route(String routeName, List<Order> orders, double startLocationLong, double startLocationLat){
         this.routeName = routeName;
         this.orders = orders;
         this.van = null;
-        this.distance = distance;
+        this.distance = 0;
         this.startLocationLong = startLocationLong;
         this.startLocationLat = startLocationLat;
     }

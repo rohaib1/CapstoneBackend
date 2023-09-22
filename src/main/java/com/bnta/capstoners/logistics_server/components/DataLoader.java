@@ -1,6 +1,7 @@
 package com.bnta.capstoners.logistics_server.components;
 
 import com.bnta.capstoners.logistics_server.models.Order;
+import com.bnta.capstoners.logistics_server.models.Route;
 import com.bnta.capstoners.logistics_server.repositories.OrderRepository;
 import com.bnta.capstoners.logistics_server.repositories.RouteRepository;
 import com.bnta.capstoners.logistics_server.repositories.VanRepository;
@@ -46,5 +47,10 @@ class DataLoader implements ApplicationRunner {
                 new Order(51.479693, -0.141626, "Toaster", LocalDate.of(2023, 9, 16))
         );
         orderRepository.saveAll(orders);
+
+        List<Route> routes = Arrays.asList(
+                new Route("Route 001", orders, 51.500832, -0.124638)
+        );
+        routeRepository.saveAll(routes);
     }
 }
