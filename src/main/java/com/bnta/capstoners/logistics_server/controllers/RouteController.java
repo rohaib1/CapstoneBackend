@@ -37,7 +37,19 @@ public class RouteController {
     @PostMapping
     public ResponseEntity<Route> createRoute(@RequestBody RouteDTO routeDTO){
         Route newRoute = routeService.saveRoute(routeDTO);
-
         return new ResponseEntity<>(newRoute, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Long> deleteRoute(@PathVariable Long id){
+        Optional<Route> route = routeService.findRouteById(id);
+        if (route.isPresent()) {
+            routeService.deleteRoute(id);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        }
+
+        else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }
