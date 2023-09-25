@@ -2,6 +2,7 @@ package com.bnta.capstoners.logistics_server.controllers;
 
 import com.bnta.capstoners.logistics_server.models.Route;
 import com.bnta.capstoners.logistics_server.models.RouteDTO;
+import com.bnta.capstoners.logistics_server.models.RouteWaypointDTO;
 import com.bnta.capstoners.logistics_server.models.Van;
 import com.bnta.capstoners.logistics_server.services.RouteService;
 import com.bnta.capstoners.logistics_server.services.VanService;
@@ -39,6 +40,13 @@ public class RouteController {
         }
     }
 
+    @GetMapping(value = "/all/waypoints")
+     public ResponseEntity<List<RouteWaypointDTO>> getRouteWaypoints() {
+        List<RouteWaypointDTO> allRouteWaypoints = routeService.getRouteWaypoints();
+        return new ResponseEntity<List<RouteWaypointDTO>>(allRouteWaypoints, HttpStatus.FOUND);
+    }
+
+
     @PostMapping
     public ResponseEntity<Route> createRoute(@RequestBody RouteDTO routeDTO){
         Route newRoute = routeService.saveRoute(routeDTO);
@@ -54,6 +62,8 @@ public class RouteController {
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
+
+
 
 //    @DeleteMapping(value = "/{id}")
 //    public ResponseEntity<Long> deleteRoute(@PathVariable Long id){
