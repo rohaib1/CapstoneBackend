@@ -4,6 +4,7 @@ import java.util.List;
 
 public class RouteWaypointDTO {
 
+    private Long routeId;
     private Double startLat;
     private Double startLong;
 
@@ -15,6 +16,7 @@ public class RouteWaypointDTO {
 
 
     public RouteWaypointDTO(Route route, List<Double> orderWaypoints){
+        this.routeId = route.getId();
         this.startLat = route.getStartLocationLat();
         this.startLong = route.getStartLocationLong();
         this.orderWaypoints = orderWaypoints;
@@ -22,6 +24,14 @@ public class RouteWaypointDTO {
 
     public RouteWaypointDTO(){
 
+    }
+
+    public Long getRouteId() {
+        return routeId;
+    }
+
+    public void setRouteId(Long routeId) {
+        this.routeId = routeId;
     }
 
     public
