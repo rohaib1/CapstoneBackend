@@ -58,7 +58,16 @@ public class RouteController {
         Optional<Van> van = vanService.findVanById(vanId);
         Optional<Route> route = routeService.findRouteById(routeId);
         if (van.isPresent() && route.isPresent()) {
-            return new ResponseEntity<>(routeService.assignVanToRoute(routeId, vanId), HttpStatus.OK);
+            return new ResponseEntity<>(routeService.assignVanToRoute(route, van), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Route> updateRouteDistance(@PathVariable Long id, @RequestParam(required = true) double distance){
+        Optional<Route> route = routeService.findRouteById(id);
+        if(route.isPresent()){
+            return new ResponseEntity<>(routeService.updateRouteDistance(route, distance), HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
