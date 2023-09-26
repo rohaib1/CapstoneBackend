@@ -47,9 +47,9 @@ public class RouteService{
                 return routeRepository.save(route);
         }
 
-        public Route assignVanToRoute(Long routeId, Long vanId){
-                Van vanToAssign = vanRepository.findById(vanId).get();
-                Route routeToUpdate = routeRepository.findById(routeId).get();
+        public Route assignVanToRoute(Optional<Route> route, Optional<Van> van){
+                Van vanToAssign = van.get();
+                Route routeToUpdate = route.get();
                 routeToUpdate.setVan(vanToAssign);
                 routeRepository.save(routeToUpdate);
                 return routeToUpdate;
@@ -68,6 +68,13 @@ public class RouteService{
                         routeWaypoints.add(new RouteWaypointDTO(route, waypoints));
                 }
                 return routeWaypoints;
+        }
+
+        public Route updateRouteDistance(Optional<Route> route, double distance){
+                Route routeToUpdate = route.get();
+                routeToUpdate.setDistance(distance);
+                routeRepository.save(routeToUpdate);
+                return routeToUpdate;
         }
 
         //FOR LOOP THROUGH A SINGLE LIST
