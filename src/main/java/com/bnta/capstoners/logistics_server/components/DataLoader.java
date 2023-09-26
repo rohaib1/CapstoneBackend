@@ -50,7 +50,7 @@ public class DataLoader implements ApplicationRunner {
 
         vanRepository.save(van);
 
-//        route.setVan(van);
+        route.setVan(van);
 
         routeRepository.save(route);
 
