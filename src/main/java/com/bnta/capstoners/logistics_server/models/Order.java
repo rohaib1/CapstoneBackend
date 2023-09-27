@@ -35,13 +35,17 @@ public class Order {
     @Column
     private boolean delivered;
 
-    public Order( double lng, double lat, String description, LocalDate date) {
+    @Column
+    private String address;
+
+    public Order( double lng, double lat, String description, LocalDate date, String address) {
         this.route = null;
         this.lng = lng;
         this.lat = lat;
         this.description = description;
         this.date = date;
         this.delivered = false;
+        this.address = address;
     }
 
     public Order() {
@@ -101,5 +105,15 @@ public class Order {
 
     public void setDelivered(boolean delivered) {
         this.delivered = delivered;
+    }
+
+    public
+    String getAddress(){
+        return address;
+    }
+
+    public
+    void setAddress(String address){
+        this.address = address;
     }
 }
