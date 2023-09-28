@@ -23,6 +23,9 @@ public class RouteService{
         @Autowired
         VanRepository vanRepository;
 
+        @Autowired
+        OrderService orderService;
+
         public List<Route> findRoutes(){
                 return routeRepository.findAll();
         }
@@ -44,7 +47,9 @@ public class RouteService{
                         routeDTO.getStartLocationLat()
                 );
 
-                return routeRepository.save(route);
+                routeRepository.save(route);
+                orderService.assignOrdersARoute(routeDTO.getOrderIds(), route);
+                return route;
         }
 
         public Route assignVanToRoute(Optional<Route> route, Optional<Van> van){

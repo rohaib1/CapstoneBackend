@@ -1,6 +1,7 @@
 package com.bnta.capstoners.logistics_server.services;
 
 import com.bnta.capstoners.logistics_server.models.Order;
+import com.bnta.capstoners.logistics_server.models.Route;
 import com.bnta.capstoners.logistics_server.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,15 @@ public class OrderService {
         orderToUpdate.setDelivered(status);
         orderRepository.save(orderToUpdate);
         return orderToUpdate;
+    }
+
+    public String assignOrdersARoute(List<Long> orderIds, Route route){
+        for (Long id : orderIds) {
+            Order orderToUpdate = orderRepository.findById(id).get();
+            orderToUpdate.setRoute(route);
+            orderRepository.save(orderToUpdate);
+        }
+        return "Orders updated";
     }
 
 }
