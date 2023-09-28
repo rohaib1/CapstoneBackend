@@ -52,11 +52,11 @@ public class DataLoader implements ApplicationRunner {
 
         route.setVan(van);
 
-        routeRepository.save(route);
+//        routeRepository.save(route);
 
-        for (Order order : orders) {
-            order.setRoute(route);
-        }
+//        for (Order order : orders) {
+//            order.setRoute(route);
+//        }
 
         orderRepository.saveAll(orders);
     }
